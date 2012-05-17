@@ -43,10 +43,13 @@ end
 #group :production do
 #  gem 'pg', '0.12.2'
 #end
-#gem 'pg', '0.12.2'
-group :production do
-  gem 'mysql2'
-end
+
+gem 'pg', '0.12.2'
+
+### sqale ###
+#group :production do
+#  gem 'mysql2'
+#end
 
 
 # To use ActiveModel has_secure_password
