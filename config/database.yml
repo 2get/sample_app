@@ -45,8 +45,8 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: 4f6b88d2903eea58
+  database: 942db4c08e53a8d3
   pool: 5
   host: mysql001.sqale.jp
-  username: 4f6b88d2903eea58
-  password: 9dbe7ef9d0ea21a92014535afdb0fd8dfa11f88c040d82d0
+  username: 942db4c08e53a8d3
+  password: 159b5354eb611191325041d9a349fa00bc9ed7ffa6d77e50
