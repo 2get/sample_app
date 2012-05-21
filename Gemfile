@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 
+# Add 2012/05/21 Chapter 5 Listing 5.3
+gem 'bootstrap-sass', '2.0.0'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
