@@ -63,9 +63,9 @@ end
 #gem 'pg', '0.12.2'
 
 ### sqale ###
-#group :production do
-#  gem 'mysql2'
-#end
+group :production do
+  gem 'mysql2'
+end
 
 
 # To use ActiveModel has_secure_password
