@@ -56,17 +56,19 @@ group :test do
   gem 'factory_girl_rails', '1.4.0'
 end
 
-#group :production do
-#  gem 'pg', '0.12.2'
-#end
+
+### heroku ###
+group :production do
+  gem 'pg', '0.12.2'
+end
 
 ### develop  ###
 #gem 'pg', '0.12.2'
 
 ### sqale ###
-group :production do
-  gem 'mysql2'
-end
+#group :production do
+#  gem 'mysql2'
+#end
 
 
 # To use ActiveModel has_secure_password
