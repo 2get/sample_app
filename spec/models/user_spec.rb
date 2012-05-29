@@ -118,9 +118,15 @@ foo@bar_baz.com foo@bar+baz.com]
 
     describe "with invalid password" do
       let(:user_for_invalid_password) { found_user.authenticate("invalid") }
-      
+
       it { should_not == user_for_invalid_password }
       specify { user_for_invalid_password.should be_false }
     end
+  end
+
+  # Listing 8.17
+  describe 'remember token' do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
   end
 end
