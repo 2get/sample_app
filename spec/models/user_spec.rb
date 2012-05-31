@@ -27,8 +27,17 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }  # Listing 8.15
   it { should respond_to(:authenticate) }  # Listing 6.29
+  it { should respond_to(:admin) }  # Listing 9.39
+  it { should respond_to(:authenticate) }
 
   it { should be_valid }
+  it { should_not be_admin }
+
+  describe 'with admin attribute set to \'true\'' do
+    before { @user.toggle!(:admin) }
+
+    it { should be_admin }
+  end
 
   describe "when name is not present" do
     before { @user.name = " " }
