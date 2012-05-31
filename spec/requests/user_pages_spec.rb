@@ -4,7 +4,25 @@ require 'spec_helper'
     subject { page }
 
     #let(:sign_up_text) { 'Sign up' }
+    describe 'index' do
+      before do
+        sign_in FactoryGirl.create(:user)
+        FactoryGirl.create(:user, name: 'Bob', email: 'bob@example.com')
+        FactoryGirl.create(:user, name: 'Ben', email: 'ben@example.com')
+        visit users_path
+      end
 
+      it { should have_selector('title', text: 'All users') }
+      it { should have_selector('h1',    text: 'All users') }
+
+      it 'should list each user' do
+        User.all.each do |user|
+          page.should have_selector('li', text: user.name)
+        end
+      end
+    end
+
+  
     describe 'signup' do
       before { visit signup_path }
 
@@ -25,9 +43,9 @@ require 'spec_helper'
 
       describe 'with valid information' do
         before do
-          fill_in 'Name', with: 'Example User'
-          fill_in 'Email', with: 'user@example.com'
-          fill_in 'Password', with: 'foobar'
+          fill_in 'Name',         with: 'Example User'
+          fill_in 'Email',        with: 'user@example.com'
+          fill_in 'Password',     with: 'foobar'
           fill_in 'Confirmation', with: 'foobar'
         end
 
@@ -54,7 +72,7 @@ require 'spec_helper'
       let(:user) { FactoryGirl.create(:user) }
       before { visit user_path(user) }
 
-      it { should have_selector('h1', text: user.name) }
+      it { should have_selector('h1',    text: user.name) }
       it { should have_selector('title', text: user.name) }
     end
 
@@ -67,7 +85,7 @@ require 'spec_helper'
       end
     
       describe 'page' do
-        it { should have_selector('h1', text: 'Update your profile') }
+        it { should have_selector('h1',    text: 'Update your profile') }
         it { should have_selector('title', text: 'Edit user') }
         it { should have_link('change', href: 'http://gravatar.com/emails') }
       end
