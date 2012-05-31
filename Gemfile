@@ -8,6 +8,8 @@ gem 'bootstrap-sass', '2.0.0'
 # Add 2012/05/22 Chapter 6 Listing 6.24
 gem 'bcrypt-ruby', '3.0.1'
 
+# Add 2012/05/31 Chapter 9 Listing 9.29
+gem 'faker', '1.0.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
