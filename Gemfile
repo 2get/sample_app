@@ -11,6 +11,10 @@ gem 'bcrypt-ruby', '3.0.1'
 # Add 2012/05/31 Chapter 9 Listing 9.29
 gem 'faker', '1.0.1'
 
+# Add 2012/05/31 Chapter 9 Listring 9.31
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
