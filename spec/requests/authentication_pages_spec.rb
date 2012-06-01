@@ -81,8 +81,8 @@ describe "Authentication" do
       end
 
       describe 'these links don\'t appear' do
-        it { should have_link('Profile',  href: user_path(user)) }
-        it { should have_link('Settings', href: edit_user_path(user)) }
+        it { should_not have_link('Profile',  href: user_path(user)) }
+        it { should_not have_link('Settings', href: edit_user_path(user)) }
       end
     end
 
