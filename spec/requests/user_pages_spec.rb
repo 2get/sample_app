@@ -46,6 +46,19 @@ require 'spec_helper'
           end
           it { should_not have_link('delete', href: user_path(admin)) }
         end
+
+        describe 'as an admin user 2' do
+          let(:admin) { FactoryGirl.create(:admin) }
+          before { sign_in admin }
+          #it 'should not be possible' do
+          #  delete user_path(admin)
+          #  response.should redirect_to(user_path)
+          #  should have_error_message('Admin suicide warning')
+          #end
+          it 'should not be possible' do
+            expect { delete user_path(admin) }.to_not change(User, :count).by(-1)
+          end
+        end
       end
     end
 
