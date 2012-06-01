@@ -7,7 +7,7 @@ describe "Authentication" do
   describe 'signin page' do
     before { visit signin_path }
 
-    it { should have_selector('h1', text: 'Sign in') }
+    it { should have_selector('h1',    text: 'Sign in') }
     it { should have_selector('title', text: 'Sign in') }
   end
 
@@ -18,9 +18,8 @@ describe "Authentication" do
       before { click_button 'Sign in' }
 
       it { should have_selector('title', text: 'Sign in') }
-      #it { should have_selector('div.alert.alert-error', text: 'Invalid') }
       it { should have_error_message('Invalid') }
-      
+
       describe 'after visiting another page' do
         before { click_link 'Home' }
         it { should_not have_selector('div.alert.alert-error') }
@@ -29,12 +28,6 @@ describe "Authentication" do
 
     describe 'with valid inforamtion' do
       let(:user) { FactoryGirl.create(:user) }
-      #before do
-      #  fill_in 'Email',    with: user.email
-      #  fill_in 'Password', with: user.password
-      #  click_button 'Sign in'
-      #end
-      #before { valid_signin(user) }
       before { sign_in user }
 
       it { should have_selector('title', text: user.name) }
@@ -43,7 +36,7 @@ describe "Authentication" do
       it { should have_link('Profile',  href: user_path(user)) }
       it { should have_link('Settings', href: edit_user_path(user)) }
       it { should have_link('Sign out', href: signout_path) }
-      
+
       it { should_not have_link('Sign in', href: signin_path) }
 
       describe 'followed by signout' do
@@ -60,7 +53,7 @@ describe "Authentication" do
       describe 'when attempting to visit a protected page' do
         before do
           visit edit_user_path(user)
-          fill_in 'Email', with: user.email
+          fill_in 'Email',    with: user.email
           fill_in 'Password', with: user.password
           click_button 'Sign in'
         end
@@ -71,7 +64,7 @@ describe "Authentication" do
           end
         end
       end
-      
+
       describe 'in the Users controller' do
         before { visit edit_user_path(user) }
         it { should have_selector('title', text: 'Sign in') }
