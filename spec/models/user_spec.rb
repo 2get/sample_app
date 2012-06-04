@@ -28,7 +28,8 @@ describe User do
   it { should respond_to(:remember_token) }  # Listing 8.15
   it { should respond_to(:authenticate) }  # Listing 6.29
   it { should respond_to(:admin) }  # Listing 9.39
-  it { should respond_to(:authenticate) }
+  #it { should respond_to(:authenticate) }
+  it { should respond_to(:microposts) }
 
   it { should be_valid }
   it { should_not be_admin }
