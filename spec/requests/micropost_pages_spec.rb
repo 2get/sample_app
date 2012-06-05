@@ -28,6 +28,7 @@ describe "MicropostPages" do
       it 'should create a micropost' do
         expect { click_button 'Post' }.should change(Micropost, :count).by(1)
       end
+      it { should have_content('micropost') }
     end
   end
 
