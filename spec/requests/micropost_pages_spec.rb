@@ -24,11 +24,14 @@ describe "MicropostPages" do
 
     describe 'with valid information' do
 
+      it { should_not have_content('delete') }
+
       before { fill_in 'micropost_content', with: 'Lorem ipsum' }
       it 'should create a micropost' do
         expect { click_button 'Post' }.should change(Micropost, :count).by(1)
       end
-      it { should have_content('micropost') }
+      it { should have_selector('a', content: 'delete') }
+      it { should have_selector('span', content: '1 micropost') }
     end
   end
 
