@@ -30,6 +30,7 @@ describe User do
   it { should respond_to(:admin) }  # Listing 9.39
   it { should respond_to(:microposts) }
   it { should respond_to(:feed) }
+  it { should respond_to(:relationships) }  # Listing 11.3
 
   it { should be_valid }
   it { should_not be_admin }
