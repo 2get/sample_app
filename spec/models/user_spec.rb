@@ -31,6 +31,12 @@ describe User do
   it { should respond_to(:microposts) }
   it { should respond_to(:feed) }
   it { should respond_to(:relationships) }  # Listing 11.3
+  it { should respond_to(:followed_users) }  # Listing 11.9
+  it { should respond_to(:reverse_relationships) }  # Listing 11.15
+  it { should respond_to(:followers) }
+  it { should respond_to(:following?) }  # Listing 11.11
+  it { should respond_to(:follow!) }
+  it { should respond_to(:unfollow!) }  # Listring 11.13
 
   it { should be_valid }
   it { should_not be_admin }
@@ -171,6 +177,29 @@ foo@bar_baz.com foo@bar+baz.com]
       its(:feed) { should include(newer_micropost) }
       its(:feed) { should include(older_micropost) }
       its(:feed) { should_not include(unfollowed_post) }
+    end
+  end
+
+  describe 'following' do
+    let(:other_user) { FactoryGirl.create(:user) }
+    before do
+      @user.save
+      @user.follow!(other_user)
+    end
+
+    it { should be_following(other_user) }
+    its(:followed_users) { should include(other_user) }
+
+    describe 'followed user' do
+      subject { other_user }
+      its(:followers) { should include(@user) }
+    end
+    
+    describe 'and unfollowing' do
+      before { @user.unfollow!(other_user) }
+
+      it { should_not be_following(other_user) }
+      its(:followed_users) { should_not include(other_user) }
     end
   end
 end
