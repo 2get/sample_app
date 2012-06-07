@@ -7,4 +7,10 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
+
+  def rss_for(user)
+    feed_icon_img_path = asset_path('feed-icon-14x14.png')
+    image_tag_options = { :border => '0', :alt => 'RSS' }
+    link_to(image_tag(feed_icon_img_path, image_tag_options), "#{root_path}users/#{user.id}.rss")
+  end
 end
